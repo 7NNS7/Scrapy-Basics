@@ -19,4 +19,9 @@ class SpiderSpider(scrapy.Spider):
 
 
     def parse_url(self,response):
-        print(response.status)
+        para = response.xpath("//h2[@id='detection']/following-sibling::div")
+        with open("Paragraphs.txt","a") as fname:
+            for lines in para:
+                #fname.write()
+                text = str(lines.xpath('.//p').extract_first())
+                fname.write(text)
