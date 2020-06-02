@@ -23,5 +23,7 @@ class SpiderSpider(scrapy.Spider):
         with open("Paragraphs.txt","a") as fname:
             for lines in para:
                 #fname.write()
-                text = str(lines.xpath('.//p').extract_first())
-                fname.write(text)
+                #text = str(lines.xpath('.//p').extract_first())
+                #fname.write(text)
+                pass
+                '''write code to pull data of the paragraph'''
