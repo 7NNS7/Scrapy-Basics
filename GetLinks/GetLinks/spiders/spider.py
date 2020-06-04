@@ -8,14 +8,17 @@ class SpiderSpider(scrapy.Spider):
     start_urls = ['http://attack.mitre.org/']
 
     def parse(self, response):
-        links = response.xpath('//div[@class="ml-5 pr-5 pt-3"]//a')
+        #links = response.xpath('//div[@class="ml-5 pr-5 pt-3"]//a')
+        links = response.xpath('//a')
         with open("Links.txt","w") as f:
             for link in links:
                 new_link = link.xpath('./@href').extract_first()
+                if len(new_link) <= 1:
+                    pass
                 new_link_url = self.start_urls[0]+str(new_link)
                 f.write(self.start_urls[0]+str(new_link)+"\n")
                 #print(self.start_urls[0]+str(new_link)+"\n")
-                yield scrapy.Request(new_link_url, callback=self.parse_url)
+                #yield scrapy.Request(new_link_url, callback=self.parse_url)
 
 
     def parse_url(self,response):
