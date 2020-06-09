@@ -1,2 +1,3 @@
 # Scrapy-Basics
-Code related to Scrapy on what I learnt.
+
+Simple hands on Scrapy to scrape links from a website at a depth of 2 and extract some content.
